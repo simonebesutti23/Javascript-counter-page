@@ -18,7 +18,7 @@ Benvenuti nel mio semplice contatore realizzato in JavaScript! 🎈 Questa picco
 ## Come Utilizzare
 1. **Clona** il repository:
     ```bash
-    git clone https://github.com/besuttisimone23@gmail.com/javascript-counter-page.git
+    git clone https://github.com/simonebesutti23/Javascript-counter-page.git
     ```
 2. **Naviga** nella directory del progetto:
     ```bash
