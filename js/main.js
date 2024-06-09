@@ -58,3 +58,26 @@ incrementButton.style.fontSize = '2em';
 incrementButton.style.width = '70px';
 incrementButton.style.height = '50px';
 
+//decrement button style
+decrementButton.style.fontSize = '2em';
+decrementButton.style.width = '70px';
+decrementButton.style.height = '50px';
+
+
+//reset button style
+resetButton.style.width = '100px';
+resetButton.style.height = '50px';
+
+
+//add event listeners to the buttons
+incrementButton.addEventListener('click', () =>{
+    counter.textContent = parseInt(counter.textContent) + 1;
+})
+
+decrementButton.addEventListener('click', () => {
+    counter.textContent = parseInt(counter.textContent) - 1;
+})
+
+resetButton.addEventListener('click', () =>{
+    counter.textContent = 0;
+})
