@@ -5,6 +5,9 @@
 ## Descrizione
 Benvenuti nel mio semplice contatore realizzato in JavaScript! 🎈 Questa piccola applicazione web ti permette di incrementare, decrementare e resettare un numero visualizzato. Perfetto per tenere traccia di qualsiasi cosa! 📊
 
+## Ecco il link!
+
+
 ## Funzionalità
 - **Incremento:** Un pulsante per aumentare il numero visualizzato. 🚀
 - **Decremento:** Un pulsante per diminuire il numero visualizzato. 🛑
