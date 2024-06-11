@@ -1,83 +1,74 @@
 /*File js counter page with DOM manipulation*/
 /*Create the elements of the page only with dom manipulation*/
+// Function to create elements with optional text, classes, and styles
+function createElement(type, textContent = '', styles = {}){
+    const element = document.createElement(type);
+    element.textContent = textContent;
+    Object.assign(element.style, styles);
+    return element;
+}
+
+//function to handle button clicks
+function handleButtonClick(event, counter) {
+    const button = event.target;
+    if (button.tagName !== 'BUTTON') return;
 
 
-/*structure of the page*/
-const container = document.createElement('div');
-/*Title creation*/
-const title = document.createElement('h1');
-const textNode = document.createTextNode("JAVASCRIPT COUNTER");
-title.appendChild(textNode);
+    switch (button.textContent) {
+        case '+':
+            counter.textContent = parseInt(counter.textContent) + 1;
+            break;
+        case '-':
+            counter.textContent = parseInt(counter.textContent) - 1;
+            break;
+        case 'Reset':
+            counter.textContent = '0';
+            break;
+    }
+}
 
-const counter = document.createElement('span');
-const buttonContainer = document.createElement('div')
-const incrementButton = document.createElement('button');
-const decrementButton = document.createElement('button');
-const resetButton = document.createElement('button');
-
-//Set the initial content of the elements
-counter.textContent = '0';
-incrementButton.textContent = '+';
-decrementButton.textContent = '-';
-resetButton.textContent = 'Reset';
-
-//Add all the elements to the container
-container.appendChild(title);
-container.appendChild(counter);
-buttonContainer.appendChild(incrementButton);
-buttonContainer.appendChild(decrementButton);
-buttonContainer.appendChild(resetButton);
-container.appendChild(buttonContainer);
-
-document.body.appendChild(container);
-
-//Add the style
-//Container style
-container.style.display = 'flex';
-container.style.flexDirection = 'column';
-container.style.justifyContent = 'center';
-container.style.alignItems = 'center';
-container.style.height = '100vh';
-container.style.gap = '10px';
+//Main function to build counter app 
+function buildCounterApp(){
+    const container = createElement('div' , '', {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'top',
+        alignItems: 'center',
+        height: '100vh',
+        gap: '10px',
+        margin: '0',
+        padding: '0'
+    })
 
 
-//Title style
-title.style.paddingBottom = '10vh';
+    //Create the title
+    const title = createElement('h1', 'JAVASCRIPT COUNTER', {marginBottom: '20vh', marginTop:'10vh', fontSize: '2em', color:'#333', fontWeight:'bold'});
+    //Create the counter
+    const counter = createElement('span', '0', {fontSize: '2em', marginBottom: '20vh'});
+    //Button container
+    const buttonContainer = createElement('div', '', {display: 'flex', gap:'10px'});
 
+    //create buttons
+    const buttonStyle = {fontSize: '2em', width:'70px', height:'50px', cursor:'pointer', borderRadius:'5px', border:'none', backgroundColor: '#4CAF50', color:'white'};
+    const incrementButton = createElement('button', '+', buttonStyle);
+    const decrementButton = createElement('button', '-', buttonStyle);
+    const resetButton = createElement('button', 'Reset', {...buttonStyle, width:'100px', fontSize:'18px'});
 
-//counter style
-counter.style.fontSize = '2em';
-counter.style.margin = '10vh 20px';
+    //Add the buttons to the button container
+    buttonContainer.appendChild(incrementButton);
+    buttonContainer.appendChild(decrementButton);
+    buttonContainer.appendChild(resetButton);
 
-//button container style
-buttonContainer.style.display = 'flex';
-buttonContainer.style.gap = '10px';
+    //Add the title, counter, and button container to the main container 
+    container.appendChild(title);
+    container.appendChild(counter);
+    container.appendChild(buttonContainer);
 
-//increment button style
-incrementButton.style.fontSize = '2em';
-incrementButton.style.width = '70px';
-incrementButton.style.height = '50px';
+    //Add the container to the body page
+    document.body.appendChild(container);
 
-//decrement button style
-decrementButton.style.fontSize = '2em';
-decrementButton.style.width = '70px';
-decrementButton.style.height = '50px';
+    //add event listener to the button container
+    buttonContainer.addEventListener('click', (event) => handleButtonClick(event, counter));
+}
 
-
-//reset button style
-resetButton.style.width = '100px';
-resetButton.style.height = '50px';
-
-
-//add event listeners to the buttons
-incrementButton.addEventListener('click', () =>{
-    counter.textContent = parseInt(counter.textContent) + 1;
-})
-
-decrementButton.addEventListener('click', () => {
-    counter.textContent = parseInt(counter.textContent) - 1;
-})
-
-resetButton.addEventListener('click', () =>{
-    counter.textContent = 0;
-})
+buildCounterApp();
