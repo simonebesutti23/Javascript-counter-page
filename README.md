@@ -6,7 +6,7 @@
 Benvenuti nel mio semplice contatore realizzato in JavaScript! 🎈 Questa piccola applicazione web ti permette di incrementare, decrementare e resettare un numero visualizzato. Perfetto per tenere traccia di qualsiasi cosa! 📊
 
 ## Ecco il link!
-
+https://main--javascript-counter-simone-besutti.netlify.app/
 
 ## Funzionalità
 - **Incremento:** Un pulsante per aumentare il numero visualizzato. 🚀
