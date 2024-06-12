@@ -27,6 +27,21 @@ function handleButtonClick(event, counter) {
     }
 }
 
+
+//Media queries with matchMedia method
+function applyResponsiveStyles(title){
+    if(window.matchMedia('(max-width: 400px)').matches){
+        Object.assign(title.style, {
+            fontSize: '30px'
+        });
+    }else {
+        Object.assign(title.style, {
+            fontSize: '2em',
+            fontWeight: 'bold'
+        })
+    }
+}
+
 //Main function to build counter app 
 function buildCounterApp(){
     const container = createElement('div' , '', {
@@ -44,7 +59,7 @@ function buildCounterApp(){
     //Create the title
     const title = createElement('h1', 'JAVASCRIPT COUNTER', {marginBottom: '20vh', marginTop:'10vh', fontSize: '2em', color:'#333', fontWeight:'bold'});
     //Create the counter
-    const counter = createElement('span', '0', {fontSize: '2em', marginBottom: '20vh'});
+    const counter = createElement('span', '0', {fontSize: '5em', marginBottom: '20vh'});
     //Button container
     const buttonContainer = createElement('div', '', {display: 'flex', gap:'10px'});
 
@@ -69,6 +84,10 @@ function buildCounterApp(){
 
     //add event listener to the button container
     buttonContainer.addEventListener('click', (event) => handleButtonClick(event, counter));
+    
+    //responsive 
+    applyResponsiveStyles(title);
+    window.addEventListener('resize', applyResponsiveStyles(title));
 }
 
 buildCounterApp();
